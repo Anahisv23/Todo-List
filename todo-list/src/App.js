@@ -1,6 +1,14 @@
 // import tasks from "./TasksData";
 import React, { useState } from "react";
 
+if (localStorage) {
+  // LocalStorage is supported!
+  console.log("LocalStorage is supported!")
+} else {
+  // No support. Use a fallback such as browser cookies or store on the server.
+  console.log("LocalStorage is NOT supported!")
+}
+
 function App() {
   const [tasksArr, setTasksArr] = useState([]);
   const [input, setInput] = useState("");
@@ -21,20 +29,16 @@ function App() {
   };
 
   const handleComplete = (e) => {
-    console.log("EEE", e.target.name);
     tasksArr.map((currTask) => {
-      console.log("is checked BEFORE", isChecked);
       if (currTask.task === e.target.name) {
-        console.log("found match");
         currTask.complete = !currTask.complete;
         setIsChecked(!isChecked);
       }
       return currTask;
     });
     setTasksArr(tasksArr);
-    console.log("affter", tasksArr);
   };
-  console.log("is checked after", isChecked);
+ 
 
   return (
     <div className="toDo">
@@ -56,12 +60,7 @@ function App() {
       <h3 style={{ textAlign: "center" }}>To Do's</h3>
       {tasksArr.map((currTask) => {
         return (
-          <ul style={{ textAlign: "center" }} key={currTask.id}>
-            <li>
-              {currTask.task} {currTask.complete}
-            </li>
-            {/* <button onClick={handleComplete} name={currTask.task}>check</button> */}
-
+          <ul key={currTask.id}>
             {currTask.complete === true ? (
               <input
                 type="checkbox"
@@ -77,6 +76,9 @@ function App() {
                 onChange={handleComplete}
               />
             )}
+            <li>
+              {currTask.task} {currTask.complete}
+            </li>
           </ul>
         );
       })}

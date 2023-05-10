@@ -18,17 +18,24 @@ ul {
 
 .toDo {
   background-color: #F2C12E;
+  margin: 0px 100px 0px 100px;
+  border-radius: 10px;
 }
 
 .form-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #A6D6FE;
+/* top right bottom left */
+  padding: 20px 20px 20px 20px;
+  margin: 0px 100px 0px 100px;
+  border-radius: 15px;
 }
 
-.centered-form {
+/* .centered-form {
   width: 80%;
   max-width: 500px;
   padding: 20px;
   background-color: #f8f8f8;
-}
+} */
