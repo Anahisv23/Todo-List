@@ -1,18 +1,27 @@
-// import tasks from "./TasksData";
-import React, { useState } from "react";
-
-if (localStorage) {
-  // LocalStorage is supported!
-  console.log("LocalStorage is supported!")
-} else {
-  // No support. Use a fallback such as browser cookies or store on the server.
-  console.log("LocalStorage is NOT supported!")
-}
+import React, { useEffect, useState } from "react";
 
 function App() {
   const [tasksArr, setTasksArr] = useState([]);
   const [input, setInput] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  // let timeLimit = 30 * 60 * 1000
+
+  // clear local storage tasks in 30 minutes
+  // setTimeout(function() {
+  //   localStorage.removeItem("tasks")
+  // }, timeLimit)
+
+  // useEffect sets local storage data to tasksArr local state if we have data in local storage 
+  // if we do not have data we setTasksArr to an empty arr 
+
+  // useEffect(() => {
+  //   const storedArray = JSON.parse(localStorage.getItem('tasks'));
+  //   if (storedArray) {
+  //     setTasksArr(storedArray);
+  //   } else {
+  //     setTasksArr([])
+  //   }
+  // }, []);
 
   const handleChange = (e) => {
     if (e.target.name === "input") {
@@ -25,24 +34,28 @@ function App() {
     let taskNumber = tasksArr.length + 1;
     let taskToAdd = { id: taskNumber, task: input, complete: false };
     setTasksArr((prev) => [...prev, taskToAdd]);
+    sessionStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]))
     setInput("");
   };
 
   const handleComplete = (e) => {
     tasksArr.map((currTask) => {
       if (currTask.task === e.target.name) {
-        currTask.complete = !currTask.complete;
-        setIsChecked(!isChecked);
-      }
-      return currTask;
-    });
-    setTasksArr(tasksArr);
-  };
- 
+            currTask.complete = !currTask.complete;
+            setIsChecked(!isChecked);
+          }
+          return currTask;
+    })
+    // update the local state array
+    setTasksArr(tasksArr)
+    // update session storage data
+    sessionStorage.setItem("tasks", JSON.stringify([tasksArr]))
+  }
 
+  
   return (
     <div className="toDo">
-      <h1 style={{ textAlign: "center" }}>Your To Do List</h1>
+      <h1 style={{ textAlign: "center" }}>To Do List</h1>
       <div className="form-container">
       <form className="centered-form">
         <label>
@@ -52,12 +65,13 @@ function App() {
             name="input"
             onChange={handleChange}
             value={input}
-          />
+            />
         </label>
         <button onClick={handleAdd}>Add Task</button>
       </form>
       </div>
-      <h3 style={{ textAlign: "center" }}>To Do's</h3>
+      <h3 style={{ textAlign: "center" }}>Tasks</h3>
+      <hr></hr>
       {tasksArr.map((currTask) => {
         return (
           <ul key={currTask.id}>
