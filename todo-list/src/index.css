@@ -22,8 +22,7 @@ ul {
   background-color: #BACBD9;
   margin: 0px 100px 0px 100px;
   border-radius: 10px;
-  border-style: solid;
-  border-color: black;
+  border: 1px solid black;
 }
 
 .form-container {
@@ -31,8 +30,7 @@ ul {
   align-items: center;
   justify-content: center;
   background-color: #C3C8FA;
-  border-style: solid;
-  border-color: black;
+  border: 1px solid black;
 /* top right bottom left */
   padding: 20px 20px 20px 20px;
   margin: 0px 100px 0px 100px;
