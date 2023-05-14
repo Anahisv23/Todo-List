@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { TiDeleteOutline } from "react-icons/ti";
 
 function App() {
   const [tasksArr, setTasksArr] = useState([]);
@@ -23,6 +24,16 @@ function App() {
   //   }
   // }, []);
 
+  const handleRemove = () => {
+    const newArr = tasksArr.filter((curr) => {
+      console.log("C", curr)
+      return curr.complete === false
+    })
+    console.log("IN handle remove", newArr)
+    setTasksArr(newArr)
+    sessionStorage.setItem("tasks", JSON.stringify(newArr))
+  }
+
   const handleChange = (e) => {
     if (e.target.name === "input") {
       setInput(e.target.value);
@@ -41,34 +52,35 @@ function App() {
   const handleComplete = (e) => {
     tasksArr.map((currTask) => {
       if (currTask.task === e.target.name) {
-            currTask.complete = !currTask.complete;
-            setIsChecked(!isChecked);
-          }
-          return currTask;
+        currTask.complete = !currTask.complete;
+        setIsChecked(!isChecked);
+      }
+      return currTask;
     })
+
     // update the local state array
     setTasksArr(tasksArr)
     // update session storage data
     sessionStorage.setItem("tasks", JSON.stringify([tasksArr]))
   }
 
-  
+
   return (
     <div className="toDo">
       <h1 style={{ textAlign: "center" }}>To Do List</h1>
       <div className="form-container">
-      <form className="centered-form">
-        <label>
-          <input
-            type="text"
-            placeholder="enter a new task here"
-            name="input"
-            onChange={handleChange}
-            value={input}
+        <form className="centered-form">
+          <label>
+            <input
+              type="text"
+              placeholder="enter a new task here"
+              name="input"
+              onChange={handleChange}
+              value={input}
             />
-        </label>
-        <button onClick={handleAdd}>Add Task</button>
-      </form>
+          </label>
+          <button onClick={handleAdd}>Add Task</button>
+        </form>
       </div>
       <h3 style={{ textAlign: "center" }}>Tasks</h3>
       <hr></hr>
@@ -90,6 +102,7 @@ function App() {
                 onChange={handleComplete}
               />
             )}
+            {currTask.complete === true ? (<TiDeleteOutline onClick={handleRemove}/>) : (null)}
             <li>
               {currTask.task} {currTask.complete}
             </li>
