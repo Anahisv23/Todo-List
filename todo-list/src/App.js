@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
+import { IoIosAdd } from "react-icons/io";
+
 
 function App() {
   const [tasksArr, setTasksArr] = useState([]);
@@ -15,14 +17,14 @@ function App() {
   // useEffect sets local storage data to tasksArr local state if we have data in local storage 
   // if we do not have data we setTasksArr to an empty arr 
 
-  // useEffect(() => {
-  //   const storedArray = JSON.parse(localStorage.getItem('tasks'));
-  //   if (storedArray) {
-  //     setTasksArr(storedArray);
-  //   } else {
-  //     setTasksArr([])
-  //   }
-  // }, []);
+  useEffect(() => {
+    const storedArray = JSON.parse(localStorage.getItem('tasks'));
+    if (storedArray) {
+      setTasksArr(storedArray);
+    } else {
+      setTasksArr([])
+    }
+  }, []);
 
   const handleRemove = () => {
     const newArr = tasksArr.filter((curr) => {
@@ -31,7 +33,7 @@ function App() {
     })
     console.log("IN handle remove", newArr)
     setTasksArr(newArr)
-    sessionStorage.setItem("tasks", JSON.stringify(newArr))
+    localStorage.setItem("tasks", JSON.stringify(newArr))
   }
 
   const handleChange = (e) => {
@@ -45,7 +47,7 @@ function App() {
     let taskNumber = tasksArr.length + 1;
     let taskToAdd = { id: taskNumber, task: input, complete: false };
     setTasksArr((prev) => [...prev, taskToAdd]);
-    sessionStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]))
+    localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]))
     setInput("");
   };
 
@@ -61,7 +63,7 @@ function App() {
     // update the local state array
     setTasksArr(tasksArr)
     // update session storage data
-    sessionStorage.setItem("tasks", JSON.stringify([tasksArr]))
+    localStorage.setItem("tasks", JSON.stringify([tasksArr]))
   }
 
 
@@ -70,6 +72,7 @@ function App() {
       <h1 style={{ textAlign: "center" }}>To Do List</h1>
       <div className="form-container">
         <form className="centered-form">
+        <h3>Add a task</h3>
           <label>
             <input
               type="text"
@@ -79,7 +82,7 @@ function App() {
               value={input}
             />
           </label>
-          <button onClick={handleAdd}>Add Task</button>
+          <button onClick={handleAdd}><IoIosAdd /></button>
         </form>
       </div>
       <h3 style={{ textAlign: "center" }}>Tasks</h3>

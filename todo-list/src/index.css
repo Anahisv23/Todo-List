@@ -20,33 +20,36 @@ ul {
 
 .toDo {
   background-color: #BACBD9;
-  margin: 0px 100px 0px 100px;
+  margin: 0px 300px 0px 300px;
   border-radius: 10px;
   border: 1px solid black;
+  color: black;
 }
 
-.form-container {
+.centered-form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: #C3C8FA;
-  border: 1px solid black;
-/* top right bottom left */
-  padding: 20px 20px 20px 20px;
+  padding: 10px 10px 10px 10px;
   margin: 0px 100px 0px 100px;
   border-radius: 15px;
+  border: 1px solid black;
 }
-
-/* .centered-form {
-  width: 80%;
-  max-width: 500px;
-  padding: 20px;
-  background-color: #f8f8f8;
-} */
 
 button {
   background-color: #BACBD9;
   font-family: 'Playfair Display', serif;
-  border-style: solid;
-  border-color: white;
+  border: 1px solid white;
+  margin: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 5px 10px 5px;
+  font-family: 'Playfair Display', serif;
+  border-radius: 10px;
 }
