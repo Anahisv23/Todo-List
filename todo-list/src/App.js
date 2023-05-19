@@ -4,7 +4,7 @@ import { IoIosAdd } from "react-icons/io";
 
 
 function App() {
-  const [tasksArr, setTasksArr] = useState([]);
+  const [tasksArr, setTasksArr] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
   const [input, setInput] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   // let timeLimit = 30 * 60 * 1000
@@ -17,21 +17,19 @@ function App() {
   // useEffect sets local storage data to tasksArr local state if we have data in local storage 
   // if we do not have data we setTasksArr to an empty arr 
 
-  useEffect(() => {
-    const storedArray = JSON.parse(localStorage.getItem('tasks'));
-    if (storedArray) {
-      setTasksArr(storedArray);
-    } else {
-      setTasksArr([])
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedArray = JSON.parse(localStorage.getItem('tasks'));
+  //   if (storedArray) {
+  //     setTasksArr(storedArray);
+  //   } else {
+  //     setTasksArr([])
+  //   }
+  // }, []);
 
   const handleRemove = () => {
     const newArr = tasksArr.filter((curr) => {
-      console.log("C", curr)
       return curr.complete === false
     })
-    console.log("IN handle remove", newArr)
     setTasksArr(newArr)
     localStorage.setItem("tasks", JSON.stringify(newArr))
   }
