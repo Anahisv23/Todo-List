@@ -53,3 +53,18 @@ input {
   font-family: 'Playfair Display', serif;
   border-radius: 10px;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.item {
+  align-self: center;
+}
+
+.checkbox {
+  width: 20px;
+}
