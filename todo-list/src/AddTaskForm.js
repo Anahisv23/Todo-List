@@ -1,0 +1,42 @@
+import React, { useState } from "react";
+import { IoIosAdd } from "react-icons/io";
+
+const AddTaskForm = ({ tasksArr, setTasksArr }) => {
+  const [input, setInput] = useState("");
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    let taskNumber = tasksArr.length + 1;
+    let taskToAdd = { id: taskNumber, task: input, complete: false };
+    setTasksArr((prev) => [...prev, taskToAdd]);
+    localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]));
+    setInput("");
+  };
+
+  return (
+    <div>
+      <h1 style={{ textAlign: "center" }}>To Do List</h1>
+      <div className="form-container">
+        <form className="centered-form">
+          <h3>Add a task</h3>
+          <label>
+            <input
+              type="text"
+              placeholder="enter a new task"
+              name="input"
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+              value={input}
+            />
+          </label>
+          <button onClick={handleAdd}>
+            <IoIosAdd size={20} />
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default AddTaskForm;

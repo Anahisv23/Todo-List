@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-// import Tasks from "./Tasks";
 import { TiDeleteOutline } from "react-icons/ti";
-import { IoIosAdd } from "react-icons/io";
+import AddTaskForm from "./AddTaskForm";
 
 const ToDoList = () => {
+  const [isChecked, setIsChecked] = useState(false);
   const [tasksArr, setTasksArr] = useState(
     JSON.parse(localStorage.getItem("tasks")) || []
   );
-  const [input, setInput] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
 
   // useEffect sets local storage data to tasksArr local state if we have data in local storage
   // if we do not have data we setTasksArr to an empty arr
@@ -17,8 +15,6 @@ const ToDoList = () => {
     const storedArray = JSON.parse(localStorage.getItem("tasks"));
     if (storedArray) {
       setTasksArr(storedArray);
-    } else {
-      setTasksArr([]);
     }
   }, []);
 
@@ -30,20 +26,6 @@ const ToDoList = () => {
     localStorage.setItem("tasks", JSON.stringify(newArr));
   };
 
-  const handleChange = (e) => {
-    if (e.target.name === "input") {
-      setInput(e.target.value);
-    }
-  };
-
-  const handleAdd = (e) => {
-    e.preventDefault();
-    let taskNumber = tasksArr.length + 1;
-    let taskToAdd = { id: taskNumber, task: input, complete: false };
-    setTasksArr((prev) => [...prev, taskToAdd]);
-    localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]));
-    setInput("");
-  };
 
   const handleComplete = (e) => {
     tasksArr.map((currTask) => {
@@ -62,24 +44,7 @@ const ToDoList = () => {
 
   return (
     <div className="toDo">
-      <h1 style={{ textAlign: "center" }}>To Do List</h1>
-      <div className="form-container">
-        <form className="centered-form">
-          <h3>Add a task</h3>
-          <label>
-            <input
-              type="text"
-              placeholder="enter a new task here"
-              name="input"
-              onChange={handleChange}
-              value={input}
-            />
-          </label>
-          <button onClick={handleAdd}>
-            <IoIosAdd />
-          </button>
-        </form>
-      </div>
+      <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr}/>
       <h3 style={{ textAlign: "center" }}>Tasks</h3>
       <hr></hr>
       {tasksArr.map((currTask) => {
