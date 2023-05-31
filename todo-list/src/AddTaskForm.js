@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoIosAdd } from "react-icons/io";
 import DateBox from "./Date";
+import {GoTasklist} from "react-icons/go"
 
 const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
@@ -29,7 +30,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>To Do List</h1>
+      <h1 style={{ textAlign: "center" }}>To Do List <GoTasklist className="check-icon"/></h1>
       <DateBox />
       <div className="form-container">
         <form className="centered-form">
