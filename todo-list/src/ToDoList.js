@@ -69,41 +69,48 @@ const ToDoList = () => {
       <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
       <h3 style={{ textAlign: "center" }}>Current Tasks</h3>
       <hr></hr>
-      {tasksArr.map((currTask) => {
-        return (
-          <div className="flex-container">
-            <p>{currTask.task}</p>
-            {currTask.complete !== true ? (
-              <>
-                <input
-                  type="checkbox"
-                  checked={false}
-                  name={currTask.id}
-                  className="checkbox"
-                  onChange={handleComplete}
-                />
-              </>
-            ) : (
-              <>
-                <input
-                  type="checkbox"
-                  checked={true}
-                  name={currTask.id}
-                  className="checkbox"
-                  onChange={handleComplete}
-                />
-                <CiSquareRemove
-                  className="item"
-                  size={30}
-                  onClick={handleRemove}
-                />
-              </>
-            )}
-          </div>
-        );
-      })}
+      {tasksArr.length === 0 ? (
+        <h4 style={{ textAlign: "center" }}>No current tasks</h4>
+      ) : (
+        tasksArr.map((currTask) => {
+          return (
+            <div className="flex-container">
+              <p>{currTask.task}</p>
+              {currTask.complete !== true ? (
+                <>
+                  <input
+                    type="checkbox"
+                    checked={false}
+                    name={currTask.id}
+                    className="checkbox"
+                    onChange={handleComplete}
+                  />
+                </>
+              ) : (
+                <>
+                  <input
+                    type="checkbox"
+                    checked={true}
+                    name={currTask.id}
+                    className="checkbox"
+                    onChange={handleComplete}
+                  />
+                  <CiSquareRemove
+                    className="item"
+                    size={30}
+                    onClick={handleRemove}
+                  />
+                </>
+              )}
+            </div>
+          );
+        })
+      )}
       <hr></hr>
-      <CompletedTasks completedTasksArr={completedTasksArr} />
+      <CompletedTasks
+        completedTasksArr={completedTasksArr}
+        setCompletedArr={setCompletedArr}
+      />
     </div>
   );
 };
