@@ -7,16 +7,10 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [error, setError] = useState("");
 
 
-//   const numbers = [1, 2, 3, 4, 5];
-
-// const evenNumber = numbers.find((element) => element % 2 === 0);
-// console.log(evenNumber); // Output: 2
-
   const handleAdd = (e) => {
     e.preventDefault();
     const taskToFind = tasksArr.find((element) => element.task === input)
 
-    console.log("task to find", taskToFind)
     if(taskToFind) {
         setError("Task already exists")
     } else if (input) {
