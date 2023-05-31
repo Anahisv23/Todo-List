@@ -1,24 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { CiSquareRemove } from "react-icons/ci";
+import CompletedTasks from "./CompletedTasks";
 import AddTaskForm from "./AddTaskForm";
 
 const ToDoList = () => {
+  const timeLimit = 24 * 60 * 60 * 1000;
   const [isChecked, setIsChecked] = useState(false);
+  const [completedTasksArr, setCompletedArr] = useState(
+    JSON.parse(localStorage.getItem("completedTasks")) || []
+  );
   const [tasksArr, setTasksArr] = useState(
     JSON.parse(localStorage.getItem("tasks")) || []
   );
+
+  // Set a timeout to delete the data after the time limit has passed
+  setTimeout(function () {
+    localStorage.removeItem("completedTasks");
+  }, timeLimit);
 
   // useEffect sets local storage data to tasksArr local state if we have data in local storage
   // if we do not have data we setTasksArr to an empty arr
 
   useEffect(() => {
     const storedArray = JSON.parse(localStorage.getItem("tasks"));
+    const completedArray = JSON.parse(localStorage.getItem("completedTasks"));
     if (storedArray) {
       setTasksArr(storedArray);
+    }
+    if (completedArray) {
+      setCompletedArr(completedArray);
     }
   }, []);
 
   const handleRemove = () => {
+    const completedTaskToFind = tasksArr.find(
+      (element) => element.complete === true
+    );
+    setCompletedArr((prev) => [...prev, completedTaskToFind]);
+    localStorage.setItem(
+      "completedTasks",
+      JSON.stringify([...completedTasksArr, completedTaskToFind])
+    );
+
     const newArr = tasksArr.filter((curr) => {
       return curr.complete === false;
     });
@@ -44,7 +67,7 @@ const ToDoList = () => {
   return (
     <div className="toDo">
       <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
-      <h3 style={{ textAlign: "center" }}>Tasks</h3>
+      <h3 style={{ textAlign: "center" }}>Current Tasks</h3>
       <hr></hr>
       {tasksArr.map((currTask) => {
         return (
@@ -69,7 +92,7 @@ const ToDoList = () => {
                   className="checkbox"
                   onChange={handleComplete}
                 />
-                <CiSquareRemove 
+                <CiSquareRemove
                   className="item"
                   size={30}
                   onClick={handleRemove}
@@ -79,6 +102,8 @@ const ToDoList = () => {
           </div>
         );
       })}
+      <hr></hr>
+      <CompletedTasks completedTasksArr={completedTasksArr} />
     </div>
   );
 };

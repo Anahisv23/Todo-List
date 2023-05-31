@@ -62,6 +62,10 @@ input {
   flex-direction: row;
   justify-content: center;
   gap: 20px;
+  background-color: #D8B08C;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0px 100px 0px 100px;
 }
 
 .item {
@@ -86,4 +90,12 @@ input {
 .item2 {
   align-self: center;
   margin-top: 20px;
+}
+
+.past-tasks {
+  background-color: #F1F2D5;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0px 100px 0px 100px;
 }

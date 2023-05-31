@@ -5,6 +5,8 @@ import DateBox from "./Date";
 const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
+  let date = new Date();
+  let d = date.toString().slice(4, 15);
 
 
   const handleAdd = (e) => {
@@ -15,7 +17,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
         setError("Task already exists")
     } else if (input) {
       let taskNumber = tasksArr.length + 1;
-      let taskToAdd = { id: taskNumber, task: input, complete: false };
+      let taskToAdd = { id: taskNumber, task: input, complete: false, date: d };
       setTasksArr((prev) => [...prev, taskToAdd]);
       localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]));
       setError("");
@@ -31,7 +33,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
       <DateBox />
       <div className="form-container">
         <form className="centered-form">
-          <h3>Add a task</h3>
+          <h2>Add a task</h2>
           <label>
             <input
               type="text"
