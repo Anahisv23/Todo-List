@@ -1,10 +1,12 @@
 
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+  /* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap'); */
+  @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Playfair+Display&display=swap')
 
 
 body {
   margin: 0;
   padding-top: 20px;
+  /* font-family: 'Playfair Display', serif; */
   font-family: 'Playfair Display', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -71,7 +73,7 @@ input {
 }
 
 .date {
-  background-color: #F2CA99;
+  background-color: #A6BC09;
   border: 1px solid black;
   border-radius: 10px;
   /* t r b l */

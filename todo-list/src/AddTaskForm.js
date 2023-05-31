@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoIosAdd } from "react-icons/io";
 import DateBox from "./Date";
 
@@ -43,10 +43,10 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
               value={input}
             />
           </label>
-          <h5>{error}</h5>
           <button onClick={handleAdd}>
             <IoIosAdd size={20} />
           </button>
+          <h5>{error}</h5>
         </form>
       </div>
     </div>

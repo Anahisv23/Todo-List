@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { TiDeleteOutline } from "react-icons/ti";
 import { CiSquareRemove } from "react-icons/ci";
 import AddTaskForm from "./AddTaskForm";
 
