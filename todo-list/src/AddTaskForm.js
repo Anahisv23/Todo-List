@@ -4,14 +4,23 @@ import DateBox from "./Date";
 
 const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
+  const [error, setError] = useState("");
 
   const handleAdd = (e) => {
     e.preventDefault();
-    let taskNumber = tasksArr.length + 1;
-    let taskToAdd = { id: taskNumber, task: input, complete: false };
-    setTasksArr((prev) => [...prev, taskToAdd]);
-    localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]));
-    setInput("");
+
+    console.log("TARGET", e.target.value)
+    console.log("input", input)
+    if (input) {
+      let taskNumber = tasksArr.length + 1;
+      let taskToAdd = { id: taskNumber, task: input, complete: false };
+      setTasksArr((prev) => [...prev, taskToAdd]);
+      localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]));
+      setError("");
+      setInput("");
+    } else if (!input) {
+      setError("Must add task");
+    }
   };
 
   return (
@@ -32,6 +41,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
               value={input}
             />
           </label>
+          <h5>{error}</h5>
           <button onClick={handleAdd}>
             <IoIosAdd size={20} />
           </button>
