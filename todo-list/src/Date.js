@@ -6,9 +6,9 @@ const DateBox = () => {
 
   return (
     <div className="date">
-      <CiCalendar size={20} className="item2" />
+      <CiCalendar size={30} className="item2" />
       <h3 style={{ textAlign: "center" }}>
-        Today's date:
+        Today...
         <br></br>
         {d}
       </h3>

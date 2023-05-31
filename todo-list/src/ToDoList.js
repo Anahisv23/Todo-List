@@ -68,9 +68,9 @@ const ToDoList = () => {
     <div className="toDo">
       <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
       <h3 style={{ textAlign: "center" }}>Current Tasks</h3>
-      <hr></hr>
+     
       {tasksArr.length === 0 ? (
-        <h4 style={{ textAlign: "center" }}>No current tasks</h4>
+        <h4 style={{ textAlign: "center" }}>Nothing to do 🥳</h4>
       ) : (
         tasksArr.map((currTask) => {
           return (
@@ -106,7 +106,7 @@ const ToDoList = () => {
           );
         })
       )}
-      <hr></hr>
+      
       <CompletedTasks
         completedTasksArr={completedTasksArr}
         setCompletedArr={setCompletedArr}

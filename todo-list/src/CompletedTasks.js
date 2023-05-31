@@ -4,7 +4,7 @@ const CompletedTasks = ({ completedTasksArr, setCompletedArr }) => {
     return (
         <div>
             <h3 style={{ textAlign: "center" }}>Past Tasks</h3>
-            {completedTasksArr.length === 0 ? (<h4 style={{ textAlign: "center" }}>No past tasks</h4>) : (
+            {completedTasksArr.length === 0 ? (<h4 style={{ textAlign: "center" }}>No past tasks 😕</h4>) : (
                 completedTasksArr.map((currTask) => (
                     <div className="past-tasks">
                         <p key={currTask.id}>

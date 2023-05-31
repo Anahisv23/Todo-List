@@ -33,7 +33,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
       <DateBox />
       <div className="form-container">
         <form className="centered-form">
-          <h2>Add a task</h2>
+          <h2>Hello busy bee 🐝<br></br> add a task below</h2>
           <label>
             <input
               type="text"
@@ -46,7 +46,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
             />
           </label>
           <button onClick={handleAdd}>
-            <IoIosAdd size={20} />
+            <IoIosAdd className="add-icon"size={25} />
           </button>
           <h5>{error}</h5>
         </form>
