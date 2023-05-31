@@ -69,3 +69,19 @@ input {
 .checkbox {
   width: 20px;
 }
+
+.date {
+  background-color: #F2CA99;
+  border: 1px solid black;
+  border-radius: 10px;
+  /* t r b l */
+  margin: 0px 100px 40px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item2 {
+  align-self: center;
+  margin-top: 20px;
+}

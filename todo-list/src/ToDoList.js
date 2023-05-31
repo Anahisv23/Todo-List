@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
+import { CiSquareRemove } from "react-icons/ci";
 import AddTaskForm from "./AddTaskForm";
 
 const ToDoList = () => {
@@ -26,7 +27,6 @@ const ToDoList = () => {
     localStorage.setItem("tasks", JSON.stringify(newArr));
   };
 
-
   const handleComplete = (e) => {
     tasksArr.map((currTask) => {
       if (currTask.id === parseInt(e.target.name)) {
@@ -44,7 +44,7 @@ const ToDoList = () => {
 
   return (
     <div className="toDo">
-      <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr}/>
+      <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
       <h3 style={{ textAlign: "center" }}>Tasks</h3>
       <hr></hr>
       {tasksArr.map((currTask) => {
@@ -70,7 +70,7 @@ const ToDoList = () => {
                   className="checkbox"
                   onChange={handleComplete}
                 />
-                <TiDeleteOutline
+                <CiSquareRemove 
                   className="item"
                   size={30}
                   onClick={handleRemove}
