@@ -68,14 +68,14 @@ const ToDoList = () => {
     <div className="toDo">
       <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
       <h3 style={{ textAlign: "center" }}>Current Tasks</h3>
-     
+
       {tasksArr.length === 0 ? (
         <h4 style={{ textAlign: "center" }}>Nothing to do 🥳</h4>
       ) : (
-        tasksArr.map((currTask) => {
+        tasksArr.sort((a, b) => (b["priorityLevel"] - a["priorityLevel"])).map((currTask) => {
           return (
             <div className="flex-container">
-              <p>{currTask.task}</p>
+              <p className={currTask.priorityLevel === 3 ? ("very-important") : (currTask.priorityLevel === 2) ? ("somewhat-important") : ("not-that-important")}>{currTask.task}</p>
               {currTask.complete !== true ? (
                 <>
                   <input
@@ -106,7 +106,7 @@ const ToDoList = () => {
           );
         })
       )}
-      
+
       <CompletedTasks
         completedTasksArr={completedTasksArr}
         setCompletedArr={setCompletedArr}

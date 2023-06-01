@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-const Slider = () => {
+const Slider = ({setPriorityLevel}) => {
     const [value, onChange] = useState(1);
     const priortyLevelTextArr = ["Not that important", "Somewhat important", "Very important"]
     const [priortyLevelText, setPriorityLevelText] = useState("")
@@ -13,8 +13,8 @@ const Slider = () => {
     });
     return (
         <div>
-            <h4 style={{ textAlign: "center", color: "darkolivegreen" }}>Select Priority level</h4>
-            <p style={{ textAlign: "center" }}>{priortyLevelText}</p>
+            <h4 style={{ textAlign: "center", color: "darkolivegreen" }}>Choose Priority Level</h4>
+            <p style={{ textAlign: "center" }} className={priortyLevelText === "Very important" ? ("very-important") : (priortyLevelText === "Somewhat important") ? ("somewhat-important") : ("not-that-important")}>{priortyLevelText}</p>
             <div className="slider-parent">
                 <div style={{color: "darkolivegreen" }} className="bubble">{value}</div>
                 <input
@@ -32,6 +32,7 @@ const Slider = () => {
                             setPriorityLevelText(priortyLevelTextArr[2])
                         }
                         onChange(radius);
+                        setPriorityLevel(parseInt(radius))
                     }}
                 />
             </div>
