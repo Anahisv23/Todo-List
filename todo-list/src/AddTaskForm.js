@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoIosAdd } from "react-icons/io";
 import DateBox from "./Date";
 import {GoTasklist} from "react-icons/go"
+import Slider from "./Slider";
 
 const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
@@ -46,6 +47,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
               value={input}
             />
           </label>
+          <Slider />
           <button onClick={handleAdd}>
             <IoIosAdd className="add-icon"size={25} />
           </button>
