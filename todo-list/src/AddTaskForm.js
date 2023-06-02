@@ -5,20 +5,25 @@ import Slider from "./Slider";
 const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-  const [priorityLevel, setPriorityLevel] = useState("Not Important")
+  const [priorityLevel, setPriorityLevel] = useState("Not Important");
   let date = new Date();
   let d = date.toString().slice(4, 15);
 
-
   const handleAdd = (e) => {
     e.preventDefault();
-    const taskToFind = tasksArr.find((element) => element.task === input)
+    const taskToFind = tasksArr.find((element) => element.task === input);
 
     if (taskToFind) {
-      setError("Task already exists")
+      setError("Task already exists");
     } else if (input) {
       let taskNumber = tasksArr.length + 1;
-      let taskToAdd = { id: taskNumber, task: input, complete: false, date: d, priorityLevel: priorityLevel };
+      let taskToAdd = {
+        id: taskNumber,
+        task: input,
+        complete: false,
+        date: d,
+        priorityLevel: priorityLevel,
+      };
       setTasksArr((prev) => [...prev, taskToAdd]);
       localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]));
       setError("");
@@ -30,11 +35,15 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
 
   return (
     <div>
-
       <div className="form-container">
         <form className="centered-form">
           {tasksArr.length === 0 ? (
-            <h2>Hello busy bee 🐝<br></br> add a task below</h2>) : (<h2>Add a task below</h2>)}
+            <h2>
+              Hello busy bee 🐝<br></br> add a task below
+            </h2>
+          ) : (
+            <h2>Add a task below</h2>
+          )}
           <label>
             <input
               type="text"

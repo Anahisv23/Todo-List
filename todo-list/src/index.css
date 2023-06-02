@@ -172,3 +172,7 @@ input {
   border: 1.5px solid #83a603;
   margin: 0px 100px 0px 100px;
 }
+
+.center-text {
+  text-align: center;
+}

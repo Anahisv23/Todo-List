@@ -4,7 +4,7 @@ import { GoTasklist } from "react-icons/go";
 import CompletedTasks from "./CompletedTasks";
 import AddTaskForm from "./AddTaskForm";
 import DateBox from "./Date";
-import RandomToDoGenerator from "./RandomToDoGenerator";
+import RandomActivityGenerator from "./RandomActivityGenerator";
 
 const ToDoList = () => {
   const timeLimit = 24 * 60 * 60 * 1000;
@@ -16,13 +16,9 @@ const ToDoList = () => {
     JSON.parse(localStorage.getItem("tasks")) || []
   );
 
-  // Set a timeout to delete the data after the time limit has passed
   setTimeout(function () {
     localStorage.removeItem("completedTasks");
   }, timeLimit);
-
-  // useEffect sets local storage data to tasksArr local state if we have data in local storage
-  // if we do not have data we setTasksArr to an empty arr
 
   useEffect(() => {
     const storedArray = JSON.parse(localStorage.getItem("tasks"));
@@ -61,23 +57,22 @@ const ToDoList = () => {
       return currTask;
     });
 
-    // update the local state array
     setTasksArr(tasksArr);
-    // update session storage data
+
     localStorage.setItem("tasks", JSON.stringify([tasksArr]));
   };
 
   return (
     <div className="toDo">
-      <h1 style={{ textAlign: "center" }}>
+      <h1 className="center-text">
         To Do List <GoTasklist className="check-icon" />
       </h1>
       <DateBox />
       <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
 
-      <h3 style={{ textAlign: "center" }}>Current Tasks</h3>
+      <h3 className="center-text">Current Tasks</h3>
       {tasksArr.length === 0 ? (
-        <h4 style={{ textAlign: "center" }}>Nothing to do 🥳</h4>
+        <h4 className="center-text">Nothing to do 🥳</h4>
       ) : (
         tasksArr
           .sort((a, b) => b["priorityLevel"] - a["priorityLevel"])
@@ -89,8 +84,8 @@ const ToDoList = () => {
                     currTask.priorityLevel === 3
                       ? "very-important"
                       : currTask.priorityLevel === 2
-                        ? "somewhat-important"
-                        : "not-that-important"
+                      ? "somewhat-important"
+                      : "not-that-important"
                   }
                 >
                   {currTask.task}
@@ -131,9 +126,11 @@ const ToDoList = () => {
         setCompletedArr={setCompletedArr}
       />
       <br></br>
-      {tasksArr.length === 0 ? <RandomToDoGenerator /> : null}
+      {tasksArr.length === 0 ? <RandomActivityGenerator /> : null}
       <br></br>
-      <footer style={{ textAlign: "center" }}>© 2023 To Do List <br></br>Anahis Valenzuela </footer>
+      <footer className="center-text">
+        © 2023 To Do List <br></br>Anahis Valenzuela
+      </footer>
     </div>
   );
 };
