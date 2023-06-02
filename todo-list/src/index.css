@@ -26,6 +26,13 @@ code {
   color: black;
 }
 
+.format {
+  background-color: red;
+   display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .centered-form {
   display: flex;
   flex-direction: column;
@@ -40,11 +47,16 @@ code {
 
 button {
   background-color: #83a603;
-  font-family: "Playfair Display", serif;
+  font-family: "DM Sans", sans-serif;
   border: 1px solid white;
   margin: 10px;
   padding: 5px 10px 5px 10px;
   border-radius: 30px;
+}
+
+button:hover {
+  background-color: #98cc00;
+  color: darkgreen;
 }
 
 input {
@@ -59,7 +71,7 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   background-color: #f1f2d5;
   border: 1px solid #365902;
   border-radius: 10px;
@@ -98,11 +110,13 @@ input {
   text-align: center;
   border: 1px solid #83a603 ;
   border-radius: 10px;
-  margin: 0px 100px 0px 100px;
+  margin: 0px 100px 20px 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 10px;
+  color: grey;
+  font-weight: bold;
 }
 
 .add-icon {
@@ -135,4 +149,26 @@ input {
 .not-that-important {
     color: #79A637;
     font-weight: bold;
+}
+
+.centered-button {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: #b7c742;
+  color: black;
+}
+
+
+.centered-button:hover {
+  background-color: #98cc00;
+  color: darkgreen;
+}
+
+.random-activity {
+  background-color: #83a603;
+  padding: 10px 0px 10px 0px ;
+  border-radius: 15px;
+  border: 1.5px solid #83a603;
+  margin: 0px 100px 0px 100px;
 }

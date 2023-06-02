@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { IoIosAdd } from "react-icons/io";
-import DateBox from "./Date";
-import {GoTasklist} from "react-icons/go"
 import Slider from "./Slider";
 
 const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-  const [priorityLevel, setPriorityLevel] = useState("")
+  const [priorityLevel, setPriorityLevel] = useState("Not Important")
   let date = new Date();
   let d = date.toString().slice(4, 15);
 
@@ -16,9 +14,8 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
     e.preventDefault();
     const taskToFind = tasksArr.find((element) => element.task === input)
 
-    console.log("priority level", priorityLevel)
-    if(taskToFind) {
-        setError("Task already exists")
+    if (taskToFind) {
+      setError("Task already exists")
     } else if (input) {
       let taskNumber = tasksArr.length + 1;
       let taskToAdd = { id: taskNumber, task: input, complete: false, date: d, priorityLevel: priorityLevel };
@@ -33,11 +30,11 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>To Do List <GoTasklist className="check-icon"/></h1>
-      <DateBox />
+
       <div className="form-container">
         <form className="centered-form">
-          <h2>Hello busy bee 🐝<br></br> add a task below</h2>
+          {tasksArr.length === 0 ? (
+            <h2>Hello busy bee 🐝<br></br> add a task below</h2>) : (<h2>Add a task below</h2>)}
           <label>
             <input
               type="text"
@@ -49,11 +46,11 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
               value={input}
             />
           </label>
-          <Slider setPriorityLevel={setPriorityLevel}/>
+          <Slider setPriorityLevel={setPriorityLevel} />
           <button onClick={handleAdd}>
-            <IoIosAdd className="add-icon"size={25} />
+            <IoIosAdd className="add-icon" size={25} />
           </button>
-          <h5 style={{color: "#BC1A1B"}}>{error}</h5>
+          <h5 style={{ color: "#BC1A1B" }}>{error}</h5>
         </form>
       </div>
     </div>

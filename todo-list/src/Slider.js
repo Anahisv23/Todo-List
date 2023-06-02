@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 const Slider = ({setPriorityLevel}) => {
     const [value, onChange] = useState(1);
-    const priortyLevelTextArr = ["Not that important", "Somewhat important", "Very important"]
-    const [priortyLevelText, setPriorityLevelText] = useState("")
+    const priorityLevelArr = ["Not that important", "Somewhat important", "Very important"]
+    const [priorityLevelText, setPriorityLevelText] = useState("")
 
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const Slider = ({setPriorityLevel}) => {
     return (
         <div>
             <h4 style={{ textAlign: "center", color: "darkolivegreen" }}>Choose Priority Level</h4>
-            <p style={{ textAlign: "center" }} className={priortyLevelText === "Very important" ? ("very-important") : (priortyLevelText === "Somewhat important") ? ("somewhat-important") : ("not-that-important")}>{priortyLevelText}</p>
+            <p style={{ textAlign: "center" }} className={priorityLevelText === "Very important" ? ("very-important") : (priorityLevelText === "Somewhat important") ? ("somewhat-important") : ("not-that-important")}>{priorityLevelText}</p>
             <div className="slider-parent">
                 <div style={{color: "darkolivegreen" }} className="bubble">{value}</div>
                 <input
@@ -25,11 +25,11 @@ const Slider = ({setPriorityLevel}) => {
                     onChange={({ target: { value: radius } }) => {
                         console.log("Rad", radius)
                         if(parseInt(radius) === 1){
-                            setPriorityLevelText(priortyLevelTextArr[0])
+                            setPriorityLevelText(priorityLevelArr[0])
                         } else if(parseInt(radius) === 2){
-                            setPriorityLevelText(priortyLevelTextArr[1])
+                            setPriorityLevelText(priorityLevelArr[1])
                         } else if(parseInt(radius) === 3){
-                            setPriorityLevelText(priortyLevelTextArr[2])
+                            setPriorityLevelText(priorityLevelArr[2])
                         }
                         onChange(radius);
                         setPriorityLevel(parseInt(radius))

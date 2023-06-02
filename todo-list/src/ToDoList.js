@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { CiSquareRemove } from "react-icons/ci";
+import { GoTasklist } from "react-icons/go";
 import CompletedTasks from "./CompletedTasks";
 import AddTaskForm from "./AddTaskForm";
+import DateBox from "./Date";
+import RandomToDoGenerator from "./RandomToDoGenerator";
 
 const ToDoList = () => {
   const timeLimit = 24 * 60 * 60 * 1000;
@@ -66,51 +69,71 @@ const ToDoList = () => {
 
   return (
     <div className="toDo">
+      <h1 style={{ textAlign: "center" }}>
+        To Do List <GoTasklist className="check-icon" />
+      </h1>
+      <DateBox />
       <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
-      <h3 style={{ textAlign: "center" }}>Current Tasks</h3>
 
+      <h3 style={{ textAlign: "center" }}>Current Tasks</h3>
       {tasksArr.length === 0 ? (
         <h4 style={{ textAlign: "center" }}>Nothing to do 🥳</h4>
       ) : (
-        tasksArr.sort((a, b) => (b["priorityLevel"] - a["priorityLevel"])).map((currTask) => {
-          return (
-            <div className="flex-container">
-              <p className={currTask.priorityLevel === 3 ? ("very-important") : (currTask.priorityLevel === 2) ? ("somewhat-important") : ("not-that-important")}>{currTask.task}</p>
-              {currTask.complete !== true ? (
-                <>
-                  <input
-                    type="checkbox"
-                    checked={false}
-                    name={currTask.id}
-                    className="checkbox"
-                    onChange={handleComplete}
-                  />
-                </>
-              ) : (
-                <>
-                  <input
-                    type="checkbox"
-                    checked={true}
-                    name={currTask.id}
-                    className="checkbox"
-                    onChange={handleComplete}
-                  />
-                  <CiSquareRemove
-                    className="item"
-                    size={30}
-                    onClick={handleRemove}
-                  />
-                </>
-              )}
-            </div>
-          );
-        })
+        tasksArr
+          .sort((a, b) => b["priorityLevel"] - a["priorityLevel"])
+          .map((currTask) => {
+            return (
+              <div className="flex-container">
+                <p
+                  className={
+                    currTask.priorityLevel === 3
+                      ? "very-important"
+                      : currTask.priorityLevel === 2
+                        ? "somewhat-important"
+                        : "not-that-important"
+                  }
+                >
+                  {currTask.task}
+                </p>
+                {currTask.complete !== true ? (
+                  <>
+                    <input
+                      type="checkbox"
+                      checked={false}
+                      name={currTask.id}
+                      className="checkbox"
+                      onChange={handleComplete}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <input
+                      type="checkbox"
+                      checked={true}
+                      name={currTask.id}
+                      className="checkbox"
+                      onChange={handleComplete}
+                    />
+                    <CiSquareRemove
+                      className="item"
+                      size={30}
+                      onClick={handleRemove}
+                    />
+                  </>
+                )}
+              </div>
+            );
+          })
       )}
 
       <CompletedTasks
         completedTasksArr={completedTasksArr}
         setCompletedArr={setCompletedArr}
       />
+      <br></br>
+      {tasksArr.length === 0 ? <RandomToDoGenerator /> : null}
+      <br></br>
+      <footer style={{ textAlign: "center" }}>© 2023 To Do List <br></br>Anahis Valenzuela </footer>
     </div>
   );
 };
