@@ -20,7 +20,7 @@ const RandomToDoGenerator = () => {
 
     return (
         <div className="random-activity">
-            <h3 style={{ textAlign: "center", color: "white" }}>Finished with all your tasks?<br></br>Click below for some<br></br>activities 🚲</h3>
+            <h3 style={{ textAlign: "center", color: "white" }}>Finished with all your tasks?<br></br>Click below for some<br></br>fun activities 🚲</h3>
             <h4 style={{ textAlign: "center", color: "#034001" }}>{activity}</h4>
             <button className="centered-button" onClick={handleClick}> Generate Random Activity</button>
         </div>
