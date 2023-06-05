@@ -4,11 +4,12 @@
 
 <p>This to do list was built using React for the UI, to render different components, and for state management. React Icons and CSS were used to style the UI. Local storage were used to store user current and past tasks. The bored API was used for the random activity generator at the bottom of the web app to encourage users to take some time for joy and leisure after doing work.</p>
 
-<h1>Technologies and tools🛠</h1>
+<!-- <h1>Technologies and tools🛠</h1>
+
 ![Javascript](https://img.shields.io/badge/-Javascript-yellow?)
 ![React](https://img.shields.io/badge/-React-blue?)
 ![HTML](https://img.shields.io/badge/-HTML-9cf?)
 ![CSS](https://img.shields.io/badge/-CSS-9cf?)
 ![LocalStorage](https://img.shields.io/badge/-CSS-9cf?)
 ![ReactIcons](https://img.shields.io/badge/-CSS-9cf?)
-![BoredAPI](https://img.shields.io/badge/-CSS-9cf?)
+![BoredAPI](https://img.shields.io/badge/-CSS-9cf?) -->
