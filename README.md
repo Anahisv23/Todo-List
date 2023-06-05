@@ -1,4 +1,4 @@
-<h1>To do list</h1>
+<h1>To do list ✍️</h1>
 
 <p>A simple and easy to use to do list web application that allows users to keep track of the current date, current tasks, and past tasks. Users can also sort their tasks by level of importance and view important tasks at the top and less important tasks at the bottom. Once users are done with all there tasks they can choose to take a break by trying out the random activity generator at the bottom of the web app.</p>
 
