@@ -65,7 +65,7 @@ const ToDoList = () => {
   return (
     <div className="toDo">
       <h1 className="center-text">
-        To Do List <GoTasklist className="check-icon" />
+        Taskify <GoTasklist className="check-icon" />
       </h1>
       <DateBox />
       <AddTaskForm tasksArr={tasksArr} setTasksArr={setTasksArr} />
