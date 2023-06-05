@@ -16,7 +16,7 @@ const RandomActivityGenerator = () => {
   const handleClick = async () => {
     console.log("in handle click")
     const randomActivity = await fetchActivity();
-    setActivity(randomActivity);
+    setActivity(randomActivity.activity);
   };
 
   return (
@@ -25,7 +25,7 @@ const RandomActivityGenerator = () => {
         Finished with all your tasks?<br></br>Click below for some<br></br>fun
         activities 🚲
       </h3>
-      <h4 className="center-text" style={{ color: "#034001" }}>{activity.activity}</h4>
+      <h4 className="center-text" style={{ color: "#034001" }}>{activity}</h4>
       <button className="centered-button" onClick={handleClick}>
         Generate Random Activity
       </button>
