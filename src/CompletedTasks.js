@@ -9,7 +9,7 @@ const CompletedTasks = ({ completedTasksArr, setCompletedArr }) => {
       ) : (
         completedTasksArr.map((currTask) => (
           <div className="past-tasks">
-            <p key={currTask.id}>
+            <p style={{paddingRight: "10px"}} key={currTask.id}>
               {currTask.date} -- {currTask.task}
             </p>
             <CiSquareRemove

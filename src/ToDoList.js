@@ -80,6 +80,7 @@ const ToDoList = () => {
             return (
               <div className="flex-container">
                 <p
+                  style={{paddingLeft: "10px"}}
                   className={
                     currTask.priorityLevel === 3
                       ? "very-important"
@@ -94,6 +95,7 @@ const ToDoList = () => {
                   <>
                     <input
                       type="checkbox"
+                      style={{paddingRight: "10px"}}
                       checked={false}
                       name={currTask.id}
                       className="checkbox"

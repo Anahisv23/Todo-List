@@ -15,34 +15,88 @@ code {
     monospace;
 }
 
-.toDo {
-  background-color: #F2F2F2;
-  margin: 0px 300px 0px 300px;
-  padding-top: 20px;
-  padding-bottom: 30px;
-  border-radius: 10px;
-  font-family: "DM Sans", sans-serif;
-  /* border: 1px solid black; */
-  color: black;
-}
+@media screen and (min-width: 600px) {
+  .toDo {
+    background-color: #f2f2f2;
+    margin: 0px 300px 0px 300px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    font-family: "DM Sans", sans-serif;
+    /* border: 1px solid black; */
+    color: black;
+  }
 
-.format {
-  background-color: red;
-   display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+  .centered-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e1e6b9;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 100px 0px 100px;
+    border-radius: 15px;
+    border: 1.5px solid #365902;
+  }
 
-.centered-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #E1E6B9;
-  padding: 10px 10px 10px 10px;
-  margin: 0px 100px 0px 100px;
-  border-radius: 15px;
-  border: 1.5px solid #365902;
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    background-color: #f1f2d5;
+    border: 1px solid #365902;
+    border-radius: 10px;
+    margin: 0px 100px 0px 100px;
+  }
+
+  .item {
+    align-self: center;
+    color: red;
+  }
+
+  .checkbox {
+    width: 20px;
+  }
+
+  .date {
+    background-color: #83a603;
+    border-radius: 10px;
+    /* t r b l */
+    margin: 0px 100px 40px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+
+  .item2 {
+    align-self: center;
+    margin-top: 20px;
+    color: white;
+  }
+
+  input {
+    width: 100%;
+    padding: 15px 5px 15px 5px;
+    font-family: "DM Sans", sans-serif;
+    border-radius: 15px;
+    border: 1px solid #83a603;
+  }
+
+  .past-tasks {
+    background-color: #f1f2d5;
+    text-align: center;
+    border: 1px solid #83a603;
+    border-radius: 10px;
+    margin: 0px 100px 20px 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    color: grey;
+    font-weight: bold;
+  }
 }
 
 button {
@@ -57,66 +111,6 @@ button {
 button:hover {
   background-color: #98cc00;
   color: darkgreen;
-}
-
-input {
-  width: 100%;
-  padding: 15px 5px 15px 5px;
-  font-family: "DM Sans", sans-serif;
-  border-radius: 15px;
-  border: 1px solid #83a603;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
-  background-color: #f1f2d5;
-  border: 1px solid #365902;
-  border-radius: 10px;
-  margin: 0px 100px 0px 100px;
-}
-
-.item {
-  align-self: center;
-  color: red;
-}
-
-.checkbox {
-  width: 20px;
-}
-
-.date {
-  background-color: #83a603;
-  /* border: 1px solid black; */
-  border-radius: 10px;
-  /* t r b l */
-  margin: 0px 100px 40px 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: white;
-}
-
-.item2 {
-  align-self: center;
-  margin-top: 20px;
-  color: white;
-}
-
-.past-tasks {
-  background-color: #f1f2d5;
-  text-align: center;
-  border: 1px solid #83a603 ;
-  border-radius: 10px;
-  margin: 0px 100px 20px 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
-  color: grey;
-  font-weight: bold;
 }
 
 .add-icon {
@@ -136,19 +130,18 @@ input {
 }
 
 .very-important {
-  color: #BC1A1B;
+  color: #bc1a1b;
   font-weight: bold;
 }
 
-
 .somewhat-important {
-  color: #F28705;
+  color: #f28705;
   font-weight: bold;
 }
 
 .not-that-important {
-    color: #79A637;
-    font-weight: bold;
+  color: #79a637;
+  font-weight: bold;
 }
 
 .centered-button {
@@ -159,7 +152,6 @@ input {
   color: black;
 }
 
-
 .centered-button:hover {
   background-color: #98cc00;
   color: darkgreen;
@@ -167,7 +159,7 @@ input {
 
 .random-activity {
   background-color: #83a603;
-  padding: 10px 0px 10px 0px ;
+  padding: 10px 0px 10px 0px;
   border-radius: 15px;
   border: 1.5px solid #83a603;
   margin: 0px 100px 0px 100px;
@@ -175,4 +167,98 @@ input {
 
 .center-text {
   text-align: center;
+}
+
+/* phone screen */
+@media screen and (max-width: 600px) {
+  .toDo {
+    background-color: #f2f2f2;
+    margin: 0px 30px 0px 30px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    font-family: "DM Sans", sans-serif;
+    color: black;
+  }
+
+  input {
+    width: 100%;
+    /* t r b l */
+    padding: 15px 10px 15px 10px;
+    font-family: "DM Sans", sans-serif;
+    border-radius: 15px;
+    border: 1px solid #83a603;
+  }
+
+  .centered-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e1e6b9;
+    padding-top: 10px;
+    margin: 0px 20px 0px 20px;
+    border-radius: 15px;
+    border: 1.5px solid #365902;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    background-color: #f1f2d5;
+    border: 1px solid #365902;
+    border-radius: 10px;
+    margin: 0px 20px 40px 20px;
+  }
+
+  .item {
+    align-self: center;
+    color: red;
+    padding-right: 10px;
+  }
+
+  .checkbox {
+    width: 20px;
+  }
+
+  .date {
+    background-color: #83a603;
+    border-radius: 10px;
+    /* t r b l */
+    margin: 0px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+
+  .item2 {
+    align-self: center;
+    margin-top: 20px;
+    color: white;
+  }
+
+  .past-tasks {
+    background-color: #f1f2d5;
+    text-align: center;
+    border: 1px solid #83a603;
+    border-radius: 10px;
+    margin: 0px 20px 40px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    color: grey;
+    font-weight: bold;
+  }
+
+  .random-activity {
+    background-color: #83a603;
+    padding: 10px 0px 10px 0px;
+    border-radius: 15px;
+    border: 1.5px solid #83a603;
+    margin: 0px 20px 40px 20px;
+  }
 }
