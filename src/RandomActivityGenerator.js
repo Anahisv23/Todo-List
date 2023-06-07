@@ -5,7 +5,7 @@ const RandomActivityGenerator = () => {
 
   const fetchActivity = async () => {
     try {
-      const res = await fetch(`http://www.boredapi.com/api/activity/`)
+      const res = await fetch(`https://www.boredapi.com/api/activity/`)
       const data = await res.json();
       return data;
     } catch (error) {
