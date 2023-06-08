@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosAdd } from "react-icons/io";
 import Slider from "./Slider";
 
@@ -6,8 +6,16 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
   const [priorityLevel, setPriorityLevel] = useState("Not Important");
+  let [taskCount, setTaskCount] = useState(0)
   let date = new Date();
   let d = date.toString().slice(4, 15);
+
+  useEffect(() => {
+    if (tasksArr.length === 0) {
+      setTaskCount(0)
+    }
+  }, [tasksArr])
+
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -16,9 +24,9 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
     if (taskToFind) {
       setError("Task already exists");
     } else if (input) {
-      let taskNumber = tasksArr.length + 1;
+      setTaskCount(taskCount += 1)
       let taskToAdd = {
-        id: taskNumber,
+        id: taskCount,
         task: input,
         complete: false,
         date: d,

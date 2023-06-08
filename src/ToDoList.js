@@ -35,6 +35,7 @@ const ToDoList = () => {
     const completedTaskToFind = tasksArr.find(
       (element) => element.complete === true
     );
+
     setCompletedArr((prev) => [...prev, completedTaskToFind]);
     localStorage.setItem(
       "completedTasks",
@@ -43,12 +44,14 @@ const ToDoList = () => {
 
     const newArr = tasksArr.filter((curr) => {
       return curr.complete === false;
-    });
+    })
+
     setTasksArr(newArr);
     localStorage.setItem("tasks", JSON.stringify(newArr));
   };
 
   const handleComplete = (e) => {
+    console.log("E", e.target.name)
     tasksArr.map((currTask) => {
       if (currTask.id === parseInt(e.target.name)) {
         currTask.complete = !currTask.complete;

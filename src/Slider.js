@@ -17,7 +17,7 @@ const Slider = ({ setPriorityLevel }) => {
   return (
     <div>
       <h4 className="center-text" style={{ color: "darkolivegreen" }}>
-        Choose Priority Level
+        Choose Importance Level
       </h4>
       <p
         style={{ textAlign: "center" }}

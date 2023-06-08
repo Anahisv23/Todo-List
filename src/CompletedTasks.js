@@ -16,6 +16,7 @@ const CompletedTasks = ({ completedTasksArr, setCompletedArr }) => {
               className="item"
               onClick={() => {
                 let newArr = completedTasksArr.filter((task) => {
+                  console.log("what is this", task)
                   return task.id !== currTask.id;
                 });
                 setCompletedArr(newArr);
