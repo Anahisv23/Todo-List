@@ -6,16 +6,9 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
   const [priorityLevel, setPriorityLevel] = useState("Not Important");
-  let [taskCount, setTaskCount] = useState(0)
+  let [taskCount, setTaskCount] = useState(1)
   let date = new Date();
   let d = date.toString().slice(4, 15);
-
-  useEffect(() => {
-    if (tasksArr.length === 0) {
-      setTaskCount(0)
-    }
-  }, [tasksArr])
-
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -24,7 +17,6 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
     if (taskToFind) {
       setError("Task already exists");
     } else if (input) {
-      setTaskCount(taskCount += 1)
       let taskToAdd = {
         id: taskCount,
         task: input,
@@ -34,6 +26,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
       };
       setTasksArr((prev) => [...prev, taskToAdd]);
       localStorage.setItem("tasks", JSON.stringify([...tasksArr, taskToAdd]));
+      setTaskCount(taskCount += 1)
       setError("");
       setInput("");
     } else if (!input) {

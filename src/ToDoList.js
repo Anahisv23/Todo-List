@@ -31,6 +31,12 @@ const ToDoList = () => {
     }
   }, []);
 
+  const updateTaskNumbers = (newArr) => {
+    newArr.forEach((task, index) => {
+      task.id = index + 1
+    })
+  }
+
   const handleRemove = () => {
     const completedTaskToFind = tasksArr.find(
       (element) => element.complete === true
@@ -43,17 +49,18 @@ const ToDoList = () => {
     );
 
     const newArr = tasksArr.filter((curr) => {
-      return curr.complete === false;
+      return curr.id !== completedTaskToFind.id;
     })
 
+    
+    updateTaskNumbers(newArr)
     setTasksArr(newArr);
     localStorage.setItem("tasks", JSON.stringify(newArr));
   };
 
   const handleComplete = (e) => {
-    console.log("E", e.target.name)
     tasksArr.map((currTask) => {
-      if (currTask.id === parseInt(e.target.name)) {
+      if (currTask.task === e.target.name) {
         currTask.complete = !currTask.complete;
         setIsChecked(!isChecked);
       }
@@ -100,7 +107,7 @@ const ToDoList = () => {
                       type="checkbox"
                       style={{paddingRight: "10px"}}
                       checked={false}
-                      name={currTask.id}
+                      name={currTask.task}
                       className="checkbox"
                       onChange={handleComplete}
                     />
@@ -110,7 +117,7 @@ const ToDoList = () => {
                     <input
                       type="checkbox"
                       checked={true}
-                      name={currTask.id}
+                      name={currTask.task}
                       className="checkbox"
                       onChange={handleComplete}
                     />
