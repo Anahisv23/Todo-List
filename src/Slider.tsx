@@ -1,5 +1,11 @@
-import { useState, useEffect } from "react";
-const Slider = ({ setPriorityLevel }) => {
+import React,{ useState, useEffect } from "react";
+
+
+interface Props {
+  setPriorityLevel: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Slider: React.FC<Props> = ({ setPriorityLevel }) => {
   const [value, onChange] = useState(1);
   const priorityLevelArr = [
     "Not that important",
@@ -9,7 +15,7 @@ const Slider = ({ setPriorityLevel }) => {
   const [priorityLevelText, setPriorityLevelText] = useState("");
 
   useEffect(() => {
-    const ele = document.querySelector(".bubble");
+    const ele = document.querySelector(".bubble") as HTMLElement
     if (ele) {
       ele.style.left = `${Number(value / 4)}px`;
     }
@@ -32,7 +38,7 @@ const Slider = ({ setPriorityLevel }) => {
         {priorityLevelText}
       </p>
       <div className="slider-parent">
-        <div style={{ color: "darkolivegreen" }} className="bubble">
+        <div className="bubble">
           {value}
         </div>
         <input
@@ -41,20 +47,21 @@ const Slider = ({ setPriorityLevel }) => {
           max="3"
           value={value}
           onChange={({ target: { value: radius } }) => {
-            if (parseInt(radius) === 1) {
+            if (radius === "1") {
               setPriorityLevelText(priorityLevelArr[0]);
-            } else if (parseInt(radius) === 2) {
+            } else if (radius === "2") {
               setPriorityLevelText(priorityLevelArr[1]);
-            } else if (parseInt(radius) === 3) {
+            } else if (radius === "3") {
               setPriorityLevelText(priorityLevelArr[2]);
             }
-            onChange(radius);
-            setPriorityLevel(parseInt(radius));
+            onChange(parseInt(radius));
+            setPriorityLevel(radius);
           }}
         />
       </div>
     </div>
   );
 };
+
 
 export default Slider;

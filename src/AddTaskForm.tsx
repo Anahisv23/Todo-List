@@ -1,8 +1,26 @@
 import { useState } from "react";
+import React from "react"
 import { IoIosAdd } from "react-icons/io";
 import Slider from "./Slider";
 
-const AddTaskForm = ({ tasksArr, setTasksArr }) => {
+interface Props {
+  tasksArr: Task[];
+  setTasksArr: React.Dispatch<React.SetStateAction<Task[]>>;
+}
+
+// React refers to the library 
+// FC stands for functional component 
+// <Props> represents props object component is expecting to recieve 
+
+interface Task {
+  id: number;
+  task: string;
+  complete: boolean;
+  date: string;
+  priorityLevel: string;
+}
+
+const AddTaskForm: React.FC<Props> = ({ tasksArr, setTasksArr }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
   const [priorityLevel, setPriorityLevel] = useState("Not Important");
@@ -10,7 +28,7 @@ const AddTaskForm = ({ tasksArr, setTasksArr }) => {
   let date = new Date();
   let d = date.toString().slice(4, 15);
 
-  const handleAdd = (e) => {
+  const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const taskToFind = tasksArr.find((element) => element.task === input);
 

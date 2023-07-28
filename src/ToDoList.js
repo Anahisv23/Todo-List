@@ -92,9 +92,9 @@ const ToDoList = () => {
                 <p
                   style={{paddingLeft: "10px"}}
                   className={
-                    currTask.priorityLevel === 3
+                    currTask.priorityLevel === "3"
                       ? "very-important"
-                      : currTask.priorityLevel === 2
+                      : currTask.priorityLevel === "2"
                       ? "somewhat-important"
                       : "not-that-important"
                   }
