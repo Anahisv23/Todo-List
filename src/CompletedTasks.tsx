@@ -1,6 +1,20 @@
 import { CiSquareRemove } from "react-icons/ci";
+import React from "react"
 
-const CompletedTasks = ({ completedTasksArr, setCompletedArr }) => {
+interface Props {
+  completedTasksArr: CompletedTask[];
+  setCompletedArr: React.Dispatch<React.SetStateAction<CompletedTask[]>>;
+}
+
+interface CompletedTask {
+  id: number;
+  task: string;
+  complete: boolean;
+  date: string;
+  priorityLevel: string;
+}
+
+const CompletedTasks: React.FC<Props> = ({ completedTasksArr, setCompletedArr }) => {
   return (
     <div>
       <h3 className="center-text">Past Tasks</h3>

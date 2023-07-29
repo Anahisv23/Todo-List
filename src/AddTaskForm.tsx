@@ -17,7 +17,7 @@ interface Task {
   task: string;
   complete: boolean;
   date: string;
-  priorityLevel: string;
+  priorityLevel: string
 }
 
 const AddTaskForm: React.FC<Props> = ({ tasksArr, setTasksArr }) => {
