@@ -14,7 +14,6 @@ const RandomActivityGenerator = () => {
   };
 
   const handleClick = async () => {
-    console.log("in handle click")
     const randomActivity = await fetchActivity();
     setActivity(randomActivity.activity);
   };
