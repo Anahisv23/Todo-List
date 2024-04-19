@@ -141,7 +141,7 @@ const ToDoList = () => {
       {tasksArr.length === 0 ? <RandomActivityGenerator /> : null}
       <br></br>
       <footer className="center-text">
-        © 2023 Taskify <br></br>Anahis Valenzuela
+        © 2024 Taskify <br></br>Anahis Valenzuela
       </footer>
     </div>
   );
