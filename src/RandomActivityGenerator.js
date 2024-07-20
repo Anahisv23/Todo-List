@@ -85,7 +85,6 @@ const wellbeingActivities = [
   "Participating in a community event",
   "Joining a fitness class",
   "Doing a yoga nidra session",
-  "Practicing EFT tapping",
   "Exploring art therapy",
   "Going bird watching",
   "Attending a spiritual gathering",
