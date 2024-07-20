@@ -82,7 +82,6 @@ const wellbeingActivities = [
   "Attending a mindfulness retreat",
   "Taking a day off work",
   "Doing breathwork exercises",
-  "Participating in a community event",
   "Joining a fitness class",
   "Doing a yoga nidra session",
   "Exploring art therapy",
