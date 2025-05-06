@@ -88,7 +88,7 @@ const ToDoList = () => {
           .sort((a, b) => b["priorityLevel"] - a["priorityLevel"])
           .map((currTask) => {
             return (
-              <div className="flex-container">
+              <div data-testid="tasks-container" className="flex-container">
                 <p
                   style={{paddingLeft: "10px"}}
                   className={

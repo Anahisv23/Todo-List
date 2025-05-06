@@ -34,6 +34,10 @@ const AddTaskForm: React.FC<Props> = ({ tasksArr, setTasksArr }) => {
 
     if (taskToFind) {
       setError("Task already exists");
+    } else if(input.length > 55){
+      setError("Task character count exceeded");
+    } else if (!input) {
+      setError("Must add a task");
     } else if (input) {
       let taskToAdd = {
         id: taskCount,
@@ -47,14 +51,12 @@ const AddTaskForm: React.FC<Props> = ({ tasksArr, setTasksArr }) => {
       setTaskCount(taskCount += 1)
       setError("");
       setInput("");
-    } else if (!input) {
-      setError("Must add a task");
-    }
+    } 
   };
 
   return (
     <div>
-      <div className="form-container">
+      <div data-testid="todo-list-container" className="form-container">
         <form className="centered-form">
           {tasksArr.length === 0 ? (
             <h2>
@@ -66,6 +68,7 @@ const AddTaskForm: React.FC<Props> = ({ tasksArr, setTasksArr }) => {
           <label>
             <input
               type="text"
+              data-testid="task-input"
               placeholder="enter a new task"
               name="input"
               onChange={(e) => {
@@ -75,10 +78,10 @@ const AddTaskForm: React.FC<Props> = ({ tasksArr, setTasksArr }) => {
             />
           </label>
           <Slider setPriorityLevel={setPriorityLevel} />
-          <button onClick={handleAdd}>
+          <button data-testid="add-task-button" onClick={handleAdd}>
             <IoIosAdd className="add-icon" size={25} />
           </button>
-          <h5 style={{ color: "#BC1A1B" }}>{error}</h5>
+          <h5 data-testid="error-message" style={{ color: "#BC1A1B" }}>{error}</h5>
         </form>
       </div>
     </div>
